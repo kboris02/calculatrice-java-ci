@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
+            http://maven.apache.org/POM/4.0.0
+            https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.boris</groupId>
+    <artifactId>calculatrice-java</artifactId>
+    <version>1.0.0</version>
+
+    <properties>
+
+        <maven.compiler.release>17</maven.compiler.release>
+
+        <project.build.sourceEncoding>
+            UTF-8
+        </project.build.sourceEncoding>
+
+        <junit.version>6.1.2</junit.version>
+
+    </properties>
+
+
+    <!-- ========================= -->
+    <!-- DEPENDANCES -->
+    <!-- ========================= -->
+
+    <dependencies>
+
+        <!-- Tests unitaires -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+
+    <!-- ========================= -->
+    <!-- BUILD -->
+    <!-- ========================= -->
+
+    <build>
+
+        <plugins>
+
+            <!-- Compilation Java -->
+            <plugin>
+
+                <groupId>org.apache.maven.plugins</groupId>
+
+                <artifactId>
+                    maven-compiler-plugin
+                </artifactId>
+
+                <version>3.15.0</version>
+
+            </plugin>
+
+
+            <!-- Exécution des tests JUnit -->
+            <plugin>
+
+                <groupId>org.apache.maven.plugins</groupId>
+
+                <artifactId>
+                    maven-surefire-plugin
+                </artifactId>
+
+                <version>3.5.5</version>
+
+            </plugin>
+
+
+            <!-- Couverture de code -->
+            <plugin>
+
+                <groupId>org.jacoco</groupId>
+
+                <artifactId>
+                    jacoco-maven-plugin
+                </artifactId>
+
+                <version>0.8.15</version>
+
+                <executions>
+
+                    <execution>
+
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+
+                    </execution>
+
+                    <execution>
+
+                        <id>report</id>
+
+                        <phase>verify</phase>
+
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+
+                    </execution>
+
+                </executions>
+
+            </plugin>
+
+
+            <!-- Création du JAR exécutable -->
+            <plugin>
+
+                <groupId>org.apache.maven.plugins</groupId>
+
+                <artifactId>
+                    maven-jar-plugin
+                </artifactId>
+
+                <version>3.5.1</version>
+
+                <configuration>
+
+                    <archive>
+
+                        <manifest>
+
+                            <mainClass>
+                                com.boris.calculator.App
+                            </mainClass>
+
+                        </manifest>
+
+                    </archive>
+
+                </configuration>
+
+            </plugin>
+
+        </plugins>
+
+    </build>
+
+</project>
